@@ -52,7 +52,7 @@ namespace HouseRentingSystem.Data.Configurations
                 Title = "Family House Comfort",
                 Address = "Near the Sea Garden in Burgas, Bulgaria",
                 Description = "It has the best comfort you will ever ask for. With two bedrooms,it is great for your family.",
-                ImageUrl ="https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a & o = &hp = 1",
+                ImageUrl ="https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a&o=&hp=1",
                 PricePerMonth = 1200.00M,
                 CategoryId = 2,
                 AgentId = Guid.Parse("0047EDCA-5406-4DCA-9A9A-30D29448AD28")

@@ -2,7 +2,7 @@ using HouseRentingSystem.Data;
 using HouseRentingSystem.Data.Models.Models;
 using HouseRentingSystem.Services.Data;
 using HouseRentingSystem.Services.Data.Interfaces;
-using Microsoft.AspNetCore.Identity;
+using HouseRentingSystem.Web.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace HouseRentingSystem
@@ -30,8 +30,7 @@ namespace HouseRentingSystem
             })
                 .AddEntityFrameworkStores<HouseRentingSystemDbContext>();
             builder.Services.AddControllersWithViews();
-            builder.Services.AddScoped<IHouseService, HouseService>();
-
+            builder.Services.AddApplicationServices(typeof(IHouseService));
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
