@@ -1,5 +1,7 @@
 using HouseRentingSystem.Data;
 using HouseRentingSystem.Data.Models.Models;
+using HouseRentingSystem.Services.Data;
+using HouseRentingSystem.Services.Data.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,11 +21,16 @@ namespace HouseRentingSystem
 
             builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
             {
-                options.SignIn.RequireConfirmedAccount = false;
-                
+                options.SignIn.RequireConfirmedAccount = builder.Configuration.GetValue<bool>("Identity:SignIn:RequireConfirmedAccount");
+                options.Password.RequireLowercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireLowercase"); 
+                options.Password.RequireNonAlphanumeric = builder.Configuration.GetValue<bool>("Identity:Password:RequireNonAlphanumeric");
+                options.Password.RequireUppercase = builder.Configuration.GetValue<bool>("Identity:Password:RequireUppercase");
+                options.Password.RequiredLength = builder.Configuration.GetValue<int>("Identity:Password:RequiredLength");
+
             })
                 .AddEntityFrameworkStores<HouseRentingSystemDbContext>();
             builder.Services.AddControllersWithViews();
+            builder.Services.AddScoped<IHouseService, HouseService>();
 
             var app = builder.Build();
 
