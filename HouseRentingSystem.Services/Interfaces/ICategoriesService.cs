@@ -1,4 +1,5 @@
 ﻿using HouseRentingSystem.Data.Models.Models;
+using HouseRentingSystem.Web.ViewModels.Category;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,6 @@ namespace HouseRentingSystem.Services.Data.Interfaces
 {
     public interface  ICategoriesService
     {
-        public Task<ICollection<Category>> GetAllCategorieAsync();
+         Task<IEnumerable<HouseSelectCategoryViewModel>> GetAllCategorieAsync();
     }
 }

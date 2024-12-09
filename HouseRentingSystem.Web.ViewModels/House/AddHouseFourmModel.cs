@@ -30,7 +30,7 @@ namespace HouseRentingSystem.Web.ViewModels.House
 
 
         [Range(typeof(decimal), PricePerMonthMinValue, PricePerMonthMaxValue)]
-        [Display(Name ="MOntly Price")]
+        [Display(Name ="Montly Price")]
         public decimal PricePerMonth { get; set; }
 
         [Required]
