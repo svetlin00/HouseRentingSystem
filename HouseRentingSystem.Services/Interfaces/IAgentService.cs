@@ -13,5 +13,6 @@ namespace HouseRentingSystem.Services.Data.Interfaces
         Task<bool> AgentExistByPhoneNumberAsync(string phoneNumber);
         Task<bool> UserHasRentsByUserIdAsync(string userId);
         Task CreateAsync(string userId, BecomeFourmModel model);
+        Task<string?> GetAgentIdAsync(string userId);
     }
 }
