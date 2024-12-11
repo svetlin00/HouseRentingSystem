@@ -9,5 +9,7 @@ namespace HouseRentingSystem.Common
    public static class GeneralApplicationConstants
     {
         public const int YearOfRelease = 2024;
+        public const int DefaultPage = 1;
+        public const int EntitisPerPage = 3;
     }
 }

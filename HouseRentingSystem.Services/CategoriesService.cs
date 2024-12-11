@@ -33,6 +33,13 @@ namespace HouseRentingSystem.Services.Data
                 .AnyAsync(c => c.Id == id);
             return result;
         }
+
+        public async Task<IEnumerable<string>> GetAllCategoryNameAsync()
+        {
+            IEnumerable<string> allNames = await this.dbContext.Categories.Select(c => c.Name).ToArrayAsync();
+            return allNames;
+            
+        }
     }
 }
  

@@ -1,4 +1,5 @@
 ﻿using HouseRentingSystem.Services.Data.Interfaces;
+using HouseRentingSystem.Services.Data.Models.House;
 using HouseRentingSystem.Web.Infrastructure.Extensions;
 using HouseRentingSystem.Web.ViewModels.House;
 using Microsoft.AspNetCore.Authorization;
@@ -19,10 +20,15 @@ namespace HouseRentingSystem.Controllers
             this.agentService = agentService;
             this.houseService = houseService;
         }
-
-        public  async Task<IActionResult> All()
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> All([FromQuery]AllHouseQueryViewModel model )
         {
-            return this.Ok();
+            AllHouseFilteredAndPagedServiceModel serviceModel = await houseService.AllAsync(model);
+            model.Houses = serviceModel.Houses;
+            model.TotalHouses = serviceModel.TotalHouseCount;
+            model.Categories = await categoriesService.GetAllCategoryNameAsync();
+            return this.View(model);
         }
 
         [HttpGet]

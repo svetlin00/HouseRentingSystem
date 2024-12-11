@@ -41,8 +41,8 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl = "https://www.luxury-architecture.net/wpcontent/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
                 PricePerMonth = 2100.00M,
                 CategoryId = 3,
-                AgentId = Guid.Parse("0047EDCA-5406-4DCA-9A9A-30D29448AD28"),
-                RenterId = Guid.Parse("E512671E-D58B-4A8F-8AA3-08DD1372F811")
+                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926"),
+                RenterId = Guid.Parse("D17F077F-1D35-4F06-4D97-08DD18F5AB75")
             };
              houses.Add(house);
 
@@ -55,7 +55,7 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl ="https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a&o=&hp=1",
                 PricePerMonth = 1200.00M,
                 CategoryId = 2,
-                AgentId = Guid.Parse("0047EDCA-5406-4DCA-9A9A-30D29448AD28")
+                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926")
             };
             houses.Add(house);
 
@@ -68,7 +68,7 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl ="https://i.pinimg.com/originals/a6/f5/85/a6f5850a77633c56e4e4ac4f867e3c00.jpg",
                 PricePerMonth = 2000.00M,
                 CategoryId = 2,
-                AgentId = Guid.Parse("0047EDCA-5406-4DCA-9A9A-30D29448AD28")
+                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926")
 
             };
             houses.Add(house);

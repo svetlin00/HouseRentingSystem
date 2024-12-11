@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HouseRentingSystem.Data.Migrations
 {
     [DbContext(typeof(HouseRentingSystemDbContext))]
-    [Migration("20241202145305_initializedDb")]
-    partial class initializedDb
+    [Migration("20241210084127_SeedingDb")]
+    partial class SeedingDb
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -40,8 +40,6 @@ namespace HouseRentingSystem.Data.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Agents");
                 });
@@ -128,6 +126,23 @@ namespace HouseRentingSystem.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Cottage"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Single-Family"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Duplex"
+                        });
                 });
 
             modelBuilder.Entity("HouseRentingSystem.Data.Models.Models.House", b =>
@@ -183,6 +198,48 @@ namespace HouseRentingSystem.Data.Migrations
                     b.HasIndex("RenterId");
 
                     b.ToTable("Houses");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8a933b72-ba97-42f3-97ec-24b8323e5909"),
+                            Address = "North London, UK (near the border)",
+                            AgentId = new Guid("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926"),
+                            CategoryId = 3,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "A big house for your whole family. Don't miss to buy a house with three bedrooms.",
+                            ImageUrl = "https://www.luxury-architecture.net/wpcontent/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
+                            IsActive = false,
+                            PricePerMonth = 2100.00m,
+                            RenterId = new Guid("d17f077f-1d35-4f06-4d97-08dd18f5ab75"),
+                            Title = "Big House Marina"
+                        },
+                        new
+                        {
+                            Id = new Guid("4a8b95e9-4109-4dee-980d-c871937ea507"),
+                            Address = "Near the Sea Garden in Burgas, Bulgaria",
+                            AgentId = new Guid("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926"),
+                            CategoryId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "It has the best comfort you will ever ask for. With two bedrooms,it is great for your family.",
+                            ImageUrl = "https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a&o=&hp=1",
+                            IsActive = false,
+                            PricePerMonth = 1200.00m,
+                            Title = "Family House Comfort"
+                        },
+                        new
+                        {
+                            Id = new Guid("99b8e7e7-1218-4f97-b08c-0485c2340f62"),
+                            Address = "Boyana Neighbourhood, Sofia, Bulgaria",
+                            AgentId = new Guid("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926"),
+                            CategoryId = 2,
+                            CreatedOn = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Description = "This luxurious house is everything you will need. It isust excellent.",
+                            ImageUrl = "https://i.pinimg.com/originals/a6/f5/85/a6f5850a77633c56e4e4ac4f867e3c00.jpg",
+                            IsActive = false,
+                            PricePerMonth = 2000.00m,
+                            Title = "Grand House"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
@@ -318,17 +375,6 @@ namespace HouseRentingSystem.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("HouseRentingSystem.Data.Models.Models.Agent", b =>
-                {
-                    b.HasOne("HouseRentingSystem.Data.Models.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("HouseRentingSystem.Data.Models.Models.House", b =>

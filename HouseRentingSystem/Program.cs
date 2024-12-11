@@ -3,7 +3,9 @@ using HouseRentingSystem.Data.Models.Models;
 using HouseRentingSystem.Services.Data;
 using HouseRentingSystem.Services.Data.Interfaces;
 using HouseRentingSystem.Web.Infrastructure.Extensions;
+using HouseRentingSystem.Web.Infrastructure.ModelBinders;
 using Microsoft.EntityFrameworkCore;
+using System.Web.Mvc;
 
 namespace HouseRentingSystem
 {
@@ -29,7 +31,11 @@ namespace HouseRentingSystem
 
             })
                 .AddEntityFrameworkStores<HouseRentingSystemDbContext>();
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddMvcOptions(options => 
+                {
+                   options.ModelBinderProviders.Insert(0, new DecimalModelBinderProvider());
+                });
             builder.Services.AddApplicationServices(typeof(IHouseService));
             var app = builder.Build();
 

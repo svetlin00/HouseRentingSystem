@@ -10,7 +10,8 @@ namespace HouseRentingSystem.Services.Data.Interfaces
 {
     public interface  ICategoriesService
     {
-         Task<IEnumerable<HouseSelectCategoryViewModel>> GetAllCategorieAsync();
+        Task<IEnumerable<HouseSelectCategoryViewModel>> GetAllCategorieAsync();
         Task<bool> ExistByIdAsync(int id);
+        Task<IEnumerable<string>> GetAllCategoryNameAsync();
     }
 }
