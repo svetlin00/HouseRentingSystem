@@ -20,6 +20,9 @@ namespace HouseRentingSystem.Data.Configurations
                 .HasForeignKey(h => h.CategoryId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder.Property(h => h.IsActive)
+                .HasDefaultValue(true);
+
             builder.HasOne(h => h.Agent)
                 .WithMany(a => a.OwnedHouses)
                 .HasForeignKey(h => h.AgentId)
@@ -41,8 +44,8 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl = "https://www.luxury-architecture.net/wpcontent/uploads/2017/12/1513217889-7597-FAIRWAYS-010.jpg",
                 PricePerMonth = 2100.00M,
                 CategoryId = 3,
-                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926"),
-                RenterId = Guid.Parse("D17F077F-1D35-4F06-4D97-08DD18F5AB75")
+                AgentId = Guid.Parse("85FB2E99-EB20-42D8-8D93-E57C54775066"),
+                RenterId = Guid.Parse("D834308A-9C23-46A0-531B-08DD510831E2")
             };
              houses.Add(house);
 
@@ -55,7 +58,7 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl ="https://cf.bstatic.com/xdata/images/hotel/max1024x768/179489660.jpg?k=2029f6d9589b49c95dcc9503a265e292c2cdfcb5277487a0050397c3f8dd545a&o=&hp=1",
                 PricePerMonth = 1200.00M,
                 CategoryId = 2,
-                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926")
+                AgentId = Guid.Parse("85FB2E99-EB20-42D8-8D93-E57C54775066")
             };
             houses.Add(house);
 
@@ -68,7 +71,7 @@ namespace HouseRentingSystem.Data.Configurations
                 ImageUrl ="https://i.pinimg.com/originals/a6/f5/85/a6f5850a77633c56e4e4ac4f867e3c00.jpg",
                 PricePerMonth = 2000.00M,
                 CategoryId = 2,
-                AgentId = Guid.Parse("d00e43ce-0e5a-421c-aa12-0ebf7b5d0926")
+                AgentId = Guid.Parse("85FB2E99-EB20-42D8-8D93-E57C54775066")
 
             };
             houses.Add(house);

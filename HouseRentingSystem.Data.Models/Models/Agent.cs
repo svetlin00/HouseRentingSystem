@@ -19,7 +19,7 @@ namespace HouseRentingSystem.Data.Models.Models
 
         public Guid UserId { get; set; }
 
-        //public virtual ApplicationUser User { get; set; } = null!;
+        public virtual ApplicationUser User { get; set; } = null!;
 
         public virtual ICollection<House> OwnedHouses { get; set; }
     }
