@@ -1,0 +1,11 @@
+﻿@model AddHouseFourmModel
+@{
+    ViewData["Title"] = "Edit House";
+
+}
+<h2 class="text-centre">@ViewData["Title"]</h2>
+<hr/>
+<partial name="_HouseFourmPartial" model="@Model"/>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial"/>
+}

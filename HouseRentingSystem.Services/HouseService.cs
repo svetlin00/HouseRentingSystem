@@ -186,6 +186,57 @@ namespace HouseRentingSystem.Services.Data
             };
         }
 
+        public async Task<bool> IsAgentWithIdOwnerOfHouseWithIdAsync(string agentId, string houseId)
+          {
+            House? house = await this._context.Houses
+                .Where(h => h.IsActive && h.AgentId.ToString() == agentId && h.Id.ToString() == houseId)
+                .FirstOrDefaultAsync();
+
+            return house != null && house.AgentId.ToString() == agentId;
+        }
+
+        public async Task EditAsync(string houseId, AddHouseFourmModel model)
+        {
+            House house =  await _context.Houses
+                .FirstAsync(h => h.Id.ToString() == houseId);
+            house.Title = model.Title;
+            house.Address = model.Address;
+            house.Description = model.Description;
+            house.ImageUrl = model.ImageUrl;
+            house.PricePerMonth = model.PricePerMonth;
+            house.CategoryId = model.CategoryId;
+
+            _context.Update(house);
+          await  _context.SaveChangesAsync();
+
+        }
+
+        public async Task DeleteAsync(string houseId)
+        {
+           
+         
+            House house = await this._context.Houses
+                .FirstAsync(h => h.Id.ToString() == houseId);
+
+            house.IsActive = false;
+            await _context.SaveChangesAsync();
+           
+        }
+
+        public async Task<DeleteHouseViewModel> HouseToDeleteByHouseIdAsync(string houseId)
+        {
+            House house = await this._context.Houses
+                .Where(h => h.IsActive)
+                .FirstAsync(h => h.Id.ToString() == houseId);
+
+            return new DeleteHouseViewModel
+            {
+                Title = house.Title,
+                Address = house.Address,
+                ImageUrl = house.ImageUrl
+            };
+        }
+
         public async Task<IEnumerable<IndexViewModel>> LastThreeHousesAsync()
         {
 
